@@ -7,7 +7,9 @@ def chebyshev_approximation(function, int_start, int_end, num_of_nodes, only_rel
     u = array_sort(chebyshev_nodes(num_of_nodes))
     print("Nodes: " + str(array_round(u, 6)))
     x = [get_x(t) for t in u]
+    print("X val: " + str(array_round(x, 6)))
     y = [function(t) for t in x]
+    print("Y val: " + str(array_round(y, 6)))
     c = chebyshev_coefficients(u, y)
     print("Chebyshev coefficients:")
     [print(("c%-2d" % i) + (" =  %+.10f" % c[i])) for i in range(0, len(c))]

@@ -10,6 +10,7 @@ def chebyshev_coefficients(u, y):
     coef_array[0] /= 2
     return coef_array
 
+
 def chebyshev_function(x, n):
     res = [1.0, 1.0*x]
     if n < 3:
