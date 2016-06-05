@@ -4,8 +4,20 @@ def draw_graph(a, b, function, color='r', interval=100.0):
     xpoints = arange(a, b, (b-a)/interval)
     ypoints = [function(tpoint) for tpoint in xpoints]
     p.figure()
-    p.plot(xpoints, ypoints)
+    p.plot(xpoints, ypoints, color=color)
     p.show()
+
+
+def draw_diag(x, y, color='r', title='', xlabel='', ylabel='', show=True):
+    import matplotlib.pyplot as p
+    p.figure()
+    p.title(title)
+    p.xlabel(xlabel)
+    p.xticks(range(min(x), max(x)))
+    p.ylabel(ylabel)
+    p.plot(x, y, color=color)
+    if show:
+        p.show()
 
 
 def draw_approx_error_plot(f, approxlist, a, b, onlyrelative=False):
@@ -32,6 +44,13 @@ def draw_approx_error_plot(f, approxlist, a, b, onlyrelative=False):
     p.plot(x, [0 for t in x], color='r')
     for vf in vfuncs:
         p.plot(x, [(f(t) - vf(t)) / f(t) for t in x])
+    p.xlim(a, b)
+    p.ylabel('relative error')
+    p.xlabel('x')
+    p.figure()
+    p.plot(x, [0 for t in x], color='r')
+    for vf in vfuncs:
+        p.plot(x, [10e-16 / f(t) for t in x])
     p.xlim(a, b)
     p.ylabel('relative error')
     p.xlabel('x')

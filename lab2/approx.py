@@ -14,4 +14,8 @@ def chebyshev_approximation(function, int_start, int_end, num_of_nodes, only_rel
     print("Chebyshev coefficients:")
     [print(("c%-2d" % i) + (" =  %+.10f" % c[i])) for i in range(0, len(c))]
     f2 = get_chebyshev_counter(c, get_u)
+    f3 = [f2(t) for t in x]
+    f4 = [(y[t] - f3[t])/y[t] for t in range(0, len(y))]
+    print(array_round(f3, 10))
+    print(f4)
     drawer.draw_approx_error_plot(function, [f2], int_start, int_end, onlyrelative=only_relative_error)
